@@ -14,7 +14,7 @@ class SignUpForm(UserCreationForm):
 
 
     def __init__(self, *args, **kwargs):
-        super(SignUpForm,self).__init__(*args,**kwargs)
+        super(SignUpForm,self).__init__(*args, **kwargs)
 
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['username'].widget.attrs['placeholder'] = 'User Name'
@@ -27,6 +27,6 @@ class SignUpForm(UserCreationForm):
         self.fields['password1'].help_text = '<ul class= "form-text text-muted small"><li>Your password can\'t be too similar to your other personal information.</li>'
 
         self.fields['password2'].widget.attrs['class'] = 'form-control'
-        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Psss'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
         self.fields['password2'].label = ''
-        self.fields['password2'].help_text = '<span class="form-text text-muted">'
+        self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before,for verification.</samll></span>'
