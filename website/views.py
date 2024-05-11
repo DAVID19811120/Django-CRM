@@ -9,7 +9,7 @@ def home(request):
        username = request.POST['username']
        password = request.POST['password']
        # authenticate
-       user = authenticate(request, username=username,password=password)
+       user = authenticate(request, username=username, password=password)
        if user is not None:
             login(request, user)
             messages.success(request,"Well Done CNZ Team!")
