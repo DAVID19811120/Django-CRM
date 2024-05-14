@@ -1,30 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home' %}">CNZ OS</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{% url 'user:home' %}">CNZ OS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'user:add_record' %}">Add record</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'user:logout' %}">logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'user:register' %}">Register</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'user:home' %}">logoin</a>
+        </li>
+        {% endif %}
 
-         {% if user.is_authenticated %}
-
-          <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-          </li>
-
-         {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'register' %}">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">home</a>
-          </li>
-
-         {% endif %}
-
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'user:home' %}">shipment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">consol</a>
+        </li>
       </ul>
-
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>
